@@ -58,9 +58,9 @@ def main():
         elif class_number == 5:
             filter_function = lambda x: canny(gaussiano(convolucion_copia_borde(mediana(gaussiano(ecualizadoRGB(x))))))
         elif class_number == 6:
-            filter_function = lambda x: canny((convolucion_copia_borde(mediana(gaussiano(ecualizadoRGB(gamma_transform(x))), sigma=1), ksize=7)))
+            filter_function = lambda x: canny(convolucion_copia_borde(mediana(gaussiano(ecualizadoRGB(gamma_transform(x)), sigma=1), ksize=7)))
         elif class_number == 7:
-            filter_function = lambda x: canny((convolucion_copia_borde(mediana(gaussiano(ecualizadoRGB(gamma_transform(x), gamma=0.33)), sigma=1), ksize=7)))
+            filter_function = lambda x: canny(convolucion_copia_borde(mediana(gaussiano(ecualizadoRGB(gamma_transform(x, gamma=0.33)), sigma=1), ksize=7)))
             #canny((convolucion_copia_borde(ecualizadoRGB((mediana(gamma_transform(read_img(x),gamma=2)))))))
             #(mediana(ecualizacion_histograma(read_img(x))))
 
