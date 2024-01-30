@@ -10,13 +10,16 @@ from descriptores_region import *
 import matplotlib.pyplot as plt
 
 def main():
+    # indice para seleccionar una imagen de las 5 y calculas los descriptores
+    index = 0
+
     # Cambiar el parametro de la funcion para seleecionar otra plaga
     imagenes= generar_numeros(class_number=0)
     
      # Muestra los descriptores 
-    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[4])
+    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[index])
     print_results_compactness_hu(compactness, hu_moments)
-    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[4])
+    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[index])
     print_results_texture_descriptors(indices_and_descriptors)
 
     # Filtros necesarios para resaltar los bordes de las hojas de la clase 0
@@ -26,15 +29,15 @@ def main():
     # Filtro ostu multiple
     otsu_multiple_ = [otsu_multiple(gaussiano(sobel(laplaciano(convolucion_copia_borde(gaussiano(gamma_transform(read_img(x),gamma=.4)))))),num_classes=4)for x in imagenes]
     # Muestra las graficas
-    aplicar_filtros_y_visualizar3(class_number=0,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Early blight")
+    aplicar_filtros_y_visualizar3(imagenes,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Early blight")
    
     # Lectura de las imagenes
     imagenes= generar_numeros(class_number=1)
     
     # Muestra los descriptores 
-    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[4])
+    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[index])
     print_results_compactness_hu(compactness, hu_moments)
-    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[4])
+    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[index])
     print_results_texture_descriptors(indices_and_descriptors)
 
     # Filtros necesarios para resaltar los bordes de las hojas de la clase 1
@@ -44,16 +47,16 @@ def main():
     # Filtro ostu multiple
     otsu_multiple_ = [otsu_multiple(convolucion_copia_borde(mediana(gaussiano ((read_img(x))))),num_classes=2) for x in imagenes]
     # Muestra las graficas
-    aplicar_filtros_y_visualizar3(class_number=0,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Late blight")
+    aplicar_filtros_y_visualizar3(imagenes,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Late blight")
     
 
 
     imagenes= generar_numeros(class_number=2)
 
     # Muestra los descriptores 
-    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[4])
+    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[index])
     print_results_compactness_hu(compactness, hu_moments)
-    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[4])
+    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[index])
     print_results_texture_descriptors(indices_and_descriptors)
 
     # Filtros necesarios para resaltar los bordes de las hojas de la clase 2
@@ -63,15 +66,15 @@ def main():
     # Filtros otsu multiple
     otsu_multiple_ = [otsu_multiple(gaussiano(gamma_transform(read_img(x)),sigma=0.3),num_classes=3)for x in imagenes]
     # Muestra las graficas
-    aplicar_filtros_y_visualizar3(class_number=0,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Leaf miner")
+    aplicar_filtros_y_visualizar3(imagenes,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Leaf miner")
 
 
     imagenes= generar_numeros(class_number=3)
 
     # Muestra los descriptores 
-    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[4])
+    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[index])
     print_results_compactness_hu(compactness, hu_moments)
-    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[4])
+    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[index])
     print_results_texture_descriptors(indices_and_descriptors)
 
     # Filtros necesarios para resaltar los bordes de las hojas de la clase 3
@@ -81,15 +84,15 @@ def main():
     # Filtro ostu multiple
     otsu_multiple_ = [otsu_multiple((highboost(convolucion_copia_borde(gaussiano(gamma_transform(read_img(x),gamma=0.5),sigma=6)),k=4)),num_classes=3)for x in imagenes]
     # Muestra las graficas
-    aplicar_filtros_y_visualizar3(class_number=0,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Leaf mold")
+    aplicar_filtros_y_visualizar3(imagenes,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Leaf mold")
     
 
     imagenes= generar_numeros(class_number=4)
 
     # Muestra los descriptores 
-    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[4])
+    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[index])
     print_results_compactness_hu(compactness, hu_moments)
-    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[4])
+    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[index])
     print_results_texture_descriptors(indices_and_descriptors)
     
     # Filtros necesarios para resaltar los bordes de las hojas de la clase 4
@@ -99,16 +102,16 @@ def main():
     # Filtro ostu multiple
     otsu_multiple_ = [otsu_multiple(convolucion_copia_borde(mediana(gaussiano(read_img(x)))),num_classes=3)for x in imagenes]
     # Muestra las graficas
-    aplicar_filtros_y_visualizar3(class_number=0,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Mosaic virus")
+    aplicar_filtros_y_visualizar3(imagenes,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Mosaic virus")
     
 
     
     imagenes= generar_numeros(class_number=5)
 
     # Muestra los descriptores 
-    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[4])
+    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[index])
     print_results_compactness_hu(compactness, hu_moments)
-    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[4])
+    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[index])
     print_results_texture_descriptors(indices_and_descriptors)
 
     # Filtros necesarios para resaltar los bordes de las hojas de la clase 5
@@ -118,16 +121,16 @@ def main():
     # Filtro ostu multiple
     otsu_multiple_ = [otsu_multiple(gaussiano(convolucion_copia_borde(mediana(gaussiano(ecualizadoRGB(read_img(x)))))),num_classes=2)for x in imagenes]
     # Muestra las graficas
-    aplicar_filtros_y_visualizar3(class_number=0,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Septoria")
+    aplicar_filtros_y_visualizar3(imagenes,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Septoria")
     
 
 
     imagenes= generar_numeros(class_number=6)
 
     # Muestra los descriptores 
-    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[4])
+    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[index])
     print_results_compactness_hu(compactness, hu_moments)
-    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[4])
+    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[index])
     print_results_texture_descriptors(indices_and_descriptors)
 
     # Filtros necesarios para resaltar los bordes de las hojas de la clase 6
@@ -137,15 +140,15 @@ def main():
     # Filtro ostu multiple
     otsu_multiple_ = [otsu_multiple((mediana(gaussiano(read_img(x)))),num_classes=4) for x in imagenes]
     # Muestra las graficas
-    aplicar_filtros_y_visualizar3(class_number=0,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Spider mites")
+    aplicar_filtros_y_visualizar3(imagenes,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Spider mites")
 
 
     imagenes= generar_numeros(class_number=7)
 
     # Muestra los descriptores 
-    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[4])
+    compactness, hu_moments = calculate_compactness_and_hu_moments(imagenes[index])
     print_results_compactness_hu(compactness, hu_moments)
-    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[4])
+    indices_and_descriptors = calculate_indices_and_texture_descriptors(imagenes[index])
     print_results_texture_descriptors(indices_and_descriptors)
 
     # Filtros necesarios para resaltar los bordes de las hojas de la clase 7
@@ -157,7 +160,7 @@ def main():
     # Filtro ostu multiple
     otsu_multiple_ = [otsu_multiple(mediana(ecualizacion_histograma(read_img(x))),num_classes=2)for x in imagenes]
     # Muestra las graficas
-    aplicar_filtros_y_visualizar3(class_number=0,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Yellow leaf curl virus")
+    aplicar_filtros_y_visualizar3(imagenes,equalizado_=equalizado_,otsu=otsu,otsu_multiple_=otsu_multiple_,titulo_grafica="Yellow leaf curl virus")
 
 
 

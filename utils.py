@@ -79,10 +79,9 @@ def visualizar_en_4_filas(imagenes, titulo):
 
 
 # Función para aplicar filtros y visualizar en 4 filas
-def aplicar_filtros_y_visualizar3(equalizado_,otsu,otsu_multiple_,titulo_grafica,class_number=0):
-    # Cambiar el parametro de la funcion para seleccionar otra plaga
-    imagenes = generar_numeros(class_number=class_number)
+def aplicar_filtros_y_visualizar3(imagenes, equalizado_,otsu,otsu_multiple_,titulo_grafica,class_number=0):
     imagenes_origininales = [read_img(img) for img in imagenes]
+
     # Combina todas las imágenes en una sola lista
     todas_las_imagenes = imagenes_origininales + equalizado_ + otsu + otsu_multiple_
 
