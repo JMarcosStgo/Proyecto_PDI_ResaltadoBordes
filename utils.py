@@ -86,4 +86,4 @@ def aplicar_filtros_y_visualizar3(imagenes, equalizado_,otsu,otsu_multiple_,titu
     todas_las_imagenes = imagenes_origininales + equalizado_ + otsu + otsu_multiple_
 
     # Visualizar imágenes en 4 filas
-    visualizar_en_4_filas(todas_las_imagenes, "clase de la plaga: "+ titulo_grafica)
+    visualizar_en_4_filas(todas_las_imagenes, "Clase de la plaga: "+ titulo_grafica)
