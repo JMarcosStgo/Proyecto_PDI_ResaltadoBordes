@@ -1,6 +1,9 @@
 # Importar la librería de opencv
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
+
+
 paths_img_filtradas = ["imagenes_filtradas/early_blight/"
                        "imagenes_filtradas/late_blight/",
                        "imagenes_filtradas/leaf_miner/",
@@ -68,3 +71,6 @@ def gaussiano(img,sigma=0):
     kernel_size = (5, 5)
     img_gaussian = cv2.GaussianBlur(img, kernel_size, sigma)
     return img_gaussian
+
+
+

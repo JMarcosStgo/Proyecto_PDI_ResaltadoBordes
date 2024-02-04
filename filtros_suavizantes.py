@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
 
 
 def convolucion(img, filtro_mask=1):
@@ -66,3 +67,16 @@ def correlacion(img):
     # Correlación
     Corrl = cv2.filter2D(J, -1, w) * (1/9)
     return Corrl
+
+
+# Cargar una imagen en color (RGB)
+#img_rgb = cv2.imread("imagenes/leaf_miner/85.jpg")
+# Convertir la imagen a escala de grises
+#img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
+#plt.imshow(img_gray,cmap='gray')
+#plt.axis('off')  # Desactiva los ejes
+#plt.show()
+#gaus = convolucion(img_gray,filtro_mask=3)
+#plt.imshow(gaus,cmap='gray')
+#plt.axis('off')  # Desactiva los ejes
+#plt.show()

@@ -1,5 +1,8 @@
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
+
+
 def laplaciano(img,mask=1,c=1):
     # Convertir a tipo de dato double
     J = img.astype(float)
@@ -89,3 +92,4 @@ def gaussiano_pasa_altas(img):
     sigma = 1.0
     img_gaussian = cv2.GaussianBlur(img, (kernel_size, kernel_size), sigma) - img
     return img_gaussian
+
